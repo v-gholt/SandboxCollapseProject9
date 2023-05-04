@@ -13,7 +13,7 @@
 				<Icon guid="ImageCatalogGuid" id="Collapse" />
 				<CommandFlag>IconIsMoniker</CommandFlag>
 				<Strings>
-					<ButtonText>Collapse Project</ButtonText>
+					<ButtonText>Collapse</ButtonText>
 					<LocCanonicalName>.SandboxCollapseProject9.ContextMenuCommand</LocCanonicalName>
 				</Strings>
 			</Button>
@@ -27,7 +27,7 @@
 
 	<KeyBindings>
 		<KeyBinding guid="SandboxCollapseProject9" id="ContextMenuCommand"
-			editor="guidVSStd97" key1="C" key2="P" mod1="CONTROL" mod2="CONTROL"/>
+			editor="guidVSStd97" key1="C" key2="C" mod1="CONTROL" mod2="CONTROL"/>
 	</KeyBindings>
 
 	<Symbols>
