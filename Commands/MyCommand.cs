@@ -45,16 +45,16 @@ namespace SandboxCollapseProjects9
         }
 
         //recursive method to iterate over children's children to collapse each item in the hierarchy
-        void IterateOverChildren(UIHierarchyItem item)
+        void IterateOverChildren(UIHierarchyItem selectedUIHierarchy)
         {
             ThreadHelper.ThrowIfNotOnUIThread();
-            UIHierarchyItems children = item.UIHierarchyItems;
-            if (item != null && children != null)
+            UIHierarchyItems items = selectedUIHierarchy.UIHierarchyItems;
+            if (selectedUIHierarchy != null && items != null)
             {
-                foreach (UIHierarchyItem child in children)
+                foreach (UIHierarchyItem item in items)
                 {
-                    child.UIHierarchyItems.Expanded = false;
-                    IterateOverChildren(child);
+                    item.UIHierarchyItems.Expanded = false;
+                    IterateOverChildren(item);
                 }
             }
         }
@@ -64,17 +64,10 @@ namespace SandboxCollapseProjects9
             await ThreadHelper.JoinableTaskFactory.SwitchToMainThreadAsync();
 
             UIHierarchyItem selectedUIHierarchy = GetSelectedUIHierarchy();
-            UIHierarchyItems items = selectedUIHierarchy.UIHierarchyItems;
-            if (selectedUIHierarchy != null && items != null)
-            {
-                foreach (UIHierarchyItem item in items)
-                {
-                    IterateOverChildren(item);
-                }
 
-                selectedUIHierarchy.UIHierarchyItems.Expanded = false;
+            IterateOverChildren(selectedUIHierarchy);
+            selectedUIHierarchy.UIHierarchyItems.Expanded = false;
 
-            }
         }
 
     }
